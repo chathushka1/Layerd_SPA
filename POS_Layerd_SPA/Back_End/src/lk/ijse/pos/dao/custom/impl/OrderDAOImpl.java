@@ -5,11 +5,12 @@ import lk.ijse.pos.dao.SuperDAO;
 import lk.ijse.pos.dao.custom.OrderDAO;
 import lk.ijse.pos.entity.Order;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 
 public class OrderDAOImpl implements OrderDAO {
     @Override
-    public ArrayList<Order> getAll() {
+    public ArrayList<Order> getAll(Connection connection) {
         return null;
     }
 

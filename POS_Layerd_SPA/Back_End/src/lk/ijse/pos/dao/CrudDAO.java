@@ -1,9 +1,10 @@
 package lk.ijse.pos.dao;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 
 public interface CrudDAO<T> {
-    public ArrayList<T> getAll();
+    public ArrayList<T> getAll(Connection connection);
     public boolean add(T dto);
     public boolean update(T dto);
     public boolean delete(String id);

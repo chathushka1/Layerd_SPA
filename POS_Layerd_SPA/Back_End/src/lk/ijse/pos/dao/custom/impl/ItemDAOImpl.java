@@ -3,11 +3,12 @@ package lk.ijse.pos.dao.custom.impl;
 import lk.ijse.pos.dao.custom.ItemDAO;
 import lk.ijse.pos.entity.Item;
 
+import java.sql.Connection;
 import java.util.ArrayList;
 
 public class ItemDAOImpl implements ItemDAO {
     @Override
-    public ArrayList<Item> getAll() {
+    public ArrayList<Item> getAll(Connection connection) {
         return null;
     }
 
