@@ -1,2 +1,4 @@
-package lk.ijse.pos.bo.custom;public interface CustomerBO {
+package lk.ijse.pos.bo.custom;
+
+public interface CustomerBO {
 }

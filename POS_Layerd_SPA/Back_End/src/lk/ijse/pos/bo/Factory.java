@@ -1,2 +1,4 @@
-package lk.ijse.pos.bo;public class Factory {
+package lk.ijse.pos.bo;
+
+public class Factory {
 }
