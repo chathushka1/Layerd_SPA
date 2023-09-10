@@ -1,22 +1,36 @@
 CREATE DATABASE IF NOT EXISTS spa;
 USE spa;
 CREATE TABLE IF NOT EXISTS customer (
-    id VARCHAR(50),
+    id VARCHAR(50) not null,
     name VARCHAR(50),
     address VARCHAR(100),
-    salary VARCHAR(15)
+    salary VARCHAR(15),
+    CONSTRAINT PRIMARY KEY(id)
 );
 CREATE TABLE IF NOT EXISTS item (
-    code VARCHAR(50),
+    code VARCHAR(50) not null,
     description VARCHAR(100),
-    qtyOnHand int(100),
-    unitPrice DECIMAL(10, 2)
+    qtyOnHand int(10),
+    unitPrice DECIMAL(10, 2),
+    CONSTRAINT PRIMARY KEY(code)
 );
 
-CREATE TABLE IF NOT EXISTS order (
-    oId VARCHAR(50),
-    cId VARCHAR(50),
+CREATE TABLE IF NOT EXISTS orders (
+    oId VARCHAR(50) not null,
+    id VARCHAR(50),
     oDate DATE,
+     CONSTRAINT FOREIGN KEY(oId) REFERENCES customer(id)
+        ON DELETE CASCADE ON UPDATE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS orderDetails(
+    oId VARCHAR(50),
+    code VARCHAR(50),
+    qty INT(10),
+    unitPrice DECIMAL(10, 2),
+     CONSTRAINT PRIMARY KEY(oId,code),
+        CONSTRAINT FOREIGN KEY(oId) REFERENCES orders(oId) ON DELETE CASCADE ON UPDATE CASCADE,
+        CONSTRAINT FOREIGN KEY(code) REFERENCES item(code) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
 INSERT INTO customer (id, name, address, salary) VALUES
@@ -25,3 +39,11 @@ INSERT INTO customer (id, name, address, salary) VALUES
     ("C00-003", "Nimal", "Matara", "55000"),
     ("C00-004", "Chamal", "Hikkaduwa", "65000"),
     ("C00-005", "Kumara", "Colombo", "35000");
+
+
+INSERT INTO item (code, description, qtyOnHand, unitPrice) VALUES
+    ("I00-001", "Soap", 20, 210),
+    ("I00-002", "Samahan", 50, 50),
+    ("I00-003", "Nil",50, 120),
+    ("I00-004", "Hadunkuru", 50, 200),
+    ("I00-005", "Biscuit", 50, 150);

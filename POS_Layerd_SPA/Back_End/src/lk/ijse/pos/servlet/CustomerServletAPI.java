@@ -20,7 +20,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-@WebServlet(urlPatterns = "/test")
+@WebServlet(urlPatterns = "/customer")
 public class CustomerServletAPI extends HttpServlet {
     CustomerBO customerBO = (CustomerBO) BOFactory.getFactory().getBO(BOFactory.BOType.CUSTOMER);
 
@@ -54,7 +54,7 @@ public class CustomerServletAPI extends HttpServlet {
         }
     }
 
-   /* @Override
+    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         try{
             BasicDataSource pool = (BasicDataSource) getServletContext().getAttribute("dbcp");
@@ -72,5 +72,5 @@ public class CustomerServletAPI extends HttpServlet {
             resp.setStatus(500);
             resp.getWriter().print(ResponseUtil.getJson("Error", throwables.getMessage()));
         }
-    }*/
+    }
 }

@@ -22,7 +22,7 @@ public class CustomerDAOImpl implements CustomerDAO {
                     resultSet.getString("salary"));
             allCustomer.add(customer);
         }
-        System.out.println("DAO"+allCustomer);
+        //System.out.println("DAO"+allCustomer);
 
         return allCustomer;
 
