@@ -13,7 +13,7 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public boolean add(Item dto) {
+    public boolean add(Item dto, Connection connection) {
         return false;
     }
 

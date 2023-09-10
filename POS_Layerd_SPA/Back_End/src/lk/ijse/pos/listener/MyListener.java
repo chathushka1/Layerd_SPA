@@ -18,11 +18,11 @@ public class MyListener implements ServletContextListener {
 
         BasicDataSource pool = new BasicDataSource();
         pool.setDriverClassName("com.mysql.jdbc.Driver");
-        pool.setUrl("jdbc:mysql://localhost:3306/company");
+        pool.setUrl("jdbc:mysql://localhost:3306/spa");
         pool.setUsername("root");
         pool.setPassword("1234");
-        pool.setInitialSize(15);
-        pool.setMaxTotal(15);
+        pool.setInitialSize(10);
+        pool.setMaxTotal(10);
 
         servletContext.setAttribute("dbcp",pool);
     }

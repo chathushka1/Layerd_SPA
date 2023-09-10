@@ -15,7 +15,7 @@ public class OrderDAOImpl implements OrderDAO {
     }
 
     @Override
-    public boolean add(Order dto) {
+    public boolean add(Order dto, Connection connection) {
         return false;
     }
 

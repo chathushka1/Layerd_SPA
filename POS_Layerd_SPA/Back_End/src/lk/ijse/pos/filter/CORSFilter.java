@@ -15,24 +15,28 @@ public class CORSFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
-        HttpServletRequest request = (HttpServletRequest) servletRequest;
-        HttpServletResponse response = (HttpServletResponse) servletRequest;
-        System.out.println("CORS Filter do Filter Invoked");
+        HttpServletResponse res= (HttpServletResponse) servletResponse;
+        HttpServletRequest req= (HttpServletRequest) servletRequest;
 
-        String method = request.getMethod();
-        filterChain.doFilter(servletRequest, servletResponse);
+        System.out.println("CROS Filter Do Filter Invoked");
+
+        String method=req.getMethod();
+
+        //filterChain.doFilter(servletRequest,servletResponse);
 
         if (method.equals("OPTIONS")){
-            response.addHeader("Access-Control-Allow-Origin","*");
-            response.addHeader("Access-Control-Allow-Methods","PUT, DELETE");
-            response.addHeader("Access-Control-Allow-Headers","content-type,auth");
+            //res.setStatus(200);
+            res.addHeader("Access-Control-Allow-Origin","*");
+            res.addHeader("Access-Control-Allow-Methods","PUT, DELETE");
+            res.addHeader("Access-Control-Allow-Headers","content-type,auth");
             filterChain.doFilter(servletRequest,servletResponse);
         }else {
-            response.addHeader("Access-Control-Allow-Origin","*");
-            response.addHeader("Content-Type","application/json");
+            res.addHeader("Access-Control-Allow-Origin","*");
+            res.addHeader("Content-Type","application/json");
             filterChain.doFilter(servletRequest,servletResponse);
         }
     }
+
 
     @Override
     public void destroy() {

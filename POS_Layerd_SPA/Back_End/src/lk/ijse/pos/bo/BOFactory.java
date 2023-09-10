@@ -2,21 +2,21 @@ package lk.ijse.pos.bo;
 
 import lk.ijse.pos.bo.custom.impl.CustomerBOImpl;
 
-public class Factory {
-    private static Factory factory;
+public class BOFactory {
+    private static BOFactory BOFactory;
 
-    private Factory() {
+    private BOFactory() {
     }
 
-    public static Factory getInstance(){
-        if (factory == null){
-            factory = new Factory();
+    public static BOFactory getFactory(){
+        if (BOFactory == null){
+            BOFactory = new BOFactory();
         }
-        return factory;
+        return BOFactory;
     }
 
     public enum BOType{
-        CUSTOMER,ITEM,ORDER
+        CUSTOMER,ITEM,ORDER;
     }
     public SuperBO getBO(BOType boType){
         switch (boType){

@@ -1,0 +1,27 @@
+CREATE DATABASE IF NOT EXISTS spa;
+USE spa;
+CREATE TABLE IF NOT EXISTS customer (
+    id VARCHAR(50),
+    name VARCHAR(50),
+    address VARCHAR(100),
+    salary VARCHAR(15)
+);
+CREATE TABLE IF NOT EXISTS item (
+    code VARCHAR(50),
+    description VARCHAR(100),
+    qtyOnHand int(100),
+    unitPrice DECIMAL(10, 2)
+);
+
+CREATE TABLE IF NOT EXISTS order (
+    oId VARCHAR(50),
+    cId VARCHAR(50),
+    oDate DATE,
+);
+
+INSERT INTO customer (id, name, address, salary) VALUES
+    ("C00-001", "Supun", "Galle", "50000"),
+    ("C00-002", "Saman", "Panadura", "60000"),
+    ("C00-003", "Nimal", "Matara", "55000"),
+    ("C00-004", "Chamal", "Hikkaduwa", "65000"),
+    ("C00-005", "Kumara", "Colombo", "35000");
