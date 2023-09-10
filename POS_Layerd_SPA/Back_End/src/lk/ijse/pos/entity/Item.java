@@ -3,10 +3,17 @@ package lk.ijse.pos.entity;
 public class Item {
     private String itemCode;
     private String itemName;
-    private String itemQty;
-    private String itemPrice;
+    private int itemQty;
+    private double itemPrice;
 
     public Item() {
+    }
+
+    public Item(String itemCode, String itemName, int itemQty, double itemPrice) {
+        this.itemCode = itemCode;
+        this.itemName = itemName;
+        this.itemQty = itemQty;
+        this.itemPrice = itemPrice;
     }
 
     public String getItemCode() {
@@ -25,19 +32,19 @@ public class Item {
         this.itemName = itemName;
     }
 
-    public String getItemQty() {
+    public int getItemQty() {
         return itemQty;
     }
 
-    public void setItemQty(String itemQty) {
+    public void setItemQty(int itemQty) {
         this.itemQty = itemQty;
     }
 
-    public String getItemPrice() {
+    public double getItemPrice() {
         return itemPrice;
     }
 
-    public void setItemPrice(String itemPrice) {
+    public void setItemPrice(double itemPrice) {
         this.itemPrice = itemPrice;
     }
 
@@ -46,8 +53,8 @@ public class Item {
         return "Item{" +
                 "itemCode='" + itemCode + '\'' +
                 ", itemName='" + itemName + '\'' +
-                ", itemQty='" + itemQty + '\'' +
-                ", itemPrice='" + itemPrice + '\'' +
+                ", itemQty=" + itemQty +
+                ", itemPrice=" + itemPrice +
                 '}';
     }
 }
