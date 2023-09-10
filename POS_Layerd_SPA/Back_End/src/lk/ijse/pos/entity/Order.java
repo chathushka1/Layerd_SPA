@@ -3,10 +3,15 @@ package lk.ijse.pos.entity;
 public class Order {
     private String orderId;
     private String itemId;
-    private int qty;
-    private double unitPrice;
+    private String date;
 
     public Order() {
+    }
+
+    public Order(String orderId, String itemId, String date) {
+        this.orderId = orderId;
+        this.itemId = itemId;
+        this.date = date;
     }
 
     public String getOrderId() {
@@ -25,20 +30,12 @@ public class Order {
         this.itemId = itemId;
     }
 
-    public int getQty() {
-        return qty;
+    public String getDate() {
+        return date;
     }
 
-    public void setQty(int qty) {
-        this.qty = qty;
-    }
-
-    public double getUnitPrice() {
-        return unitPrice;
-    }
-
-    public void setUnitPrice(double unitPrice) {
-        this.unitPrice = unitPrice;
+    public void setDate(String date) {
+        this.date = date;
     }
 
     @Override
@@ -46,8 +43,7 @@ public class Order {
         return "Order{" +
                 "orderId='" + orderId + '\'' +
                 ", itemId='" + itemId + '\'' +
-                ", qty=" + qty +
-                ", unitPrice=" + unitPrice +
+                ", date='" + date + '\'' +
                 '}';
     }
 }

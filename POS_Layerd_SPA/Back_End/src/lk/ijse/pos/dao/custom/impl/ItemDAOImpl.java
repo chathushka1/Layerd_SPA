@@ -26,8 +26,8 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public boolean add(Item dto, Connection connection) {
-        return false;
+    public boolean add(Item dto, Connection connection) throws SQLException {
+        return connection.createStatement().executeUpdate("INSERT INTO item VALUES ('"+dto.getItemCode()+"','"+dto.getItemName()+"','"+dto.getItemQty()+"','"+dto.getItemPrice()+"')")>0;
     }
 
     @Override

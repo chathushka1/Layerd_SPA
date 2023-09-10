@@ -31,8 +31,8 @@ public class ItemBOImpl implements ItemBO {
     }
 
     @Override
-    public boolean addItem(ItemDTO dto) {
-        return false;
+    public boolean addItem(ItemDTO dto, Connection connection) throws SQLException {
+        return itemDAO.add(new Item(dto.getItemCode(),dto.getItemName(),dto.getItemQty(),dto.getItemPrice()),connection);
     }
 
     @Override

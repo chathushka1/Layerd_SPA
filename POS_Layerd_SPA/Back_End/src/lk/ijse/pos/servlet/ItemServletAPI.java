@@ -2,6 +2,7 @@ package lk.ijse.pos.servlet;
 
 import lk.ijse.pos.bo.BOFactory;
 import lk.ijse.pos.bo.custom.ItemBO;
+import lk.ijse.pos.model.CustomerDTO;
 import lk.ijse.pos.model.ItemDTO;
 import lk.ijse.pos.util.ResponseUtil;
 import org.apache.commons.dbcp2.BasicDataSource;
@@ -49,6 +50,26 @@ public class ItemServletAPI extends HttpServlet {
             e.printStackTrace();
             resp.setStatus(500);
             resp.getWriter().print(ResponseUtil.getJson("Error", e.getMessage()));
+        }
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        try{
+            BasicDataSource pool = (BasicDataSource) getServletContext().getAttribute("dbcp");
+            Connection connection = pool.getConnection();
+
+            String code =req.getParameter("code");
+            String description = req.getParameter("description");
+            int qtyOnHand = Integer.parseInt(req.getParameter("qtyOnHand"));
+            double unitPrice = Double.parseDouble(req.getParameter("unitPrice"));
+
+            itemBO.addItem(new ItemDTO(code,description,qtyOnHand,unitPrice),connection);
+            resp.getWriter().print(ResponseUtil.getJson("Success","Item Added"));
+
+        } catch (SQLException throwables) {
+            resp.setStatus(500);
+            resp.getWriter().print(ResponseUtil.getJson("Error", throwables.getMessage()));
         }
     }
 }

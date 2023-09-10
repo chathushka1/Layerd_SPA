@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public interface ItemBO extends SuperBO {
     public ArrayList<ItemDTO> getAllItem(Connection connection) throws SQLException;
-    public boolean addItem(ItemDTO dto);
+    public boolean addItem(ItemDTO dto, Connection connection) throws SQLException;
     public boolean updateItem(ItemDTO dto);
     public boolean deleteItem(String id);
     public String generateNewID();
