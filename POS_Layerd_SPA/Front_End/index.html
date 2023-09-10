@@ -91,6 +91,7 @@
                             <button id="btnCusUpdate" type="button" style="width: 150px" class="btn btn-info m-auto m-lg-2">Update</button>
                             <button id="btnCusDelete" type="button" style="width: 150px" class="btn btn-danger m-auto m-lg-2">Delete</button>
                             <button id="btnCusClear" type="button" style="width: 150px" class="btn btn-warning m-auto m-lg-2">Clear</button>
+                            <button id="btnGetAll" type="button" style="width: 150px" class="btn btn-warning m-auto m-lg-2">Get All</button>
                         </form>
                     </div>
                 </div>
@@ -523,13 +524,42 @@
 <script src="model/itemModel.js"></script>
 <script src="model/ordersModel.js"></script>
 <script src="model/cartModel.js"></script>
-<script src="controller/customer.js"></script>
+<!--<script src="controller/customer.js"></script>
 <script src="controller/item.js"></script>
-<script src="controller/orders.js"></script>
+<script src="controller/orders.js"></script>-->
 
 <script src="controller/validations/customerValidation.js"></script>
 <script src="controller/validations/itemValidation.js"></script>
 
+<script>
+    getAllCustomer();
+    function getAllCustomer(){
+        $("#tblCustomer").empty();
+        $.ajax({
+            url:"http://localhost:8080/Layerd",
+            method:"GET",
+            headers:{
+                Auth: "user=admin,pass=admin"
+            },
 
+            success:function (res){
+                let customer = res.data;
+                for (let i = 0; i<customer.length;i++){
+                    let id = customer[i].id;
+                    let name = customer[i].name;
+                    let address = customer[i].address;
+                    let salary = customer[i].salary;
+
+                    console.log(id,name,address,salary);
+
+                    let row = `<tr><td>${id}</td><td>${name}</td><td>${address}</td><td>${salary}</td></tr>`;
+                    $("#tblCustomer").append(row);
+                }
+            },error:function (error){
+                console.log(error);
+            }
+        });
+    }
+</script>
 </body>
 </html>
