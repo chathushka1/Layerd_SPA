@@ -10,4 +10,5 @@ public interface CrudDAO<T> {
     public boolean update(T dto);
     public boolean delete(String id);
     public String generateNewId();
+    boolean UpdateQty(T dto,Connection connection) throws SQLException, ClassNotFoundException;
 }

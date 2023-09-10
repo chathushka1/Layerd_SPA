@@ -2,15 +2,15 @@ package lk.ijse.pos.entity;
 
 public class Order {
     private String orderId;
-    private String itemId;
+    private String customerId;
     private String date;
 
     public Order() {
     }
 
-    public Order(String orderId, String itemId, String date) {
+    public Order(String orderId, String customerId, String date) {
         this.orderId = orderId;
-        this.itemId = itemId;
+        this.customerId = customerId;
         this.date = date;
     }
 
@@ -22,12 +22,12 @@ public class Order {
         this.orderId = orderId;
     }
 
-    public String getItemId() {
-        return itemId;
+    public String getCustomerId() {
+        return customerId;
     }
 
-    public void setItemId(String itemId) {
-        this.itemId = itemId;
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
     }
 
     public String getDate() {
@@ -42,7 +42,7 @@ public class Order {
     public String toString() {
         return "Order{" +
                 "orderId='" + orderId + '\'' +
-                ", itemId='" + itemId + '\'' +
+                ", customerId='" + customerId + '\'' +
                 ", date='" + date + '\'' +
                 '}';
     }

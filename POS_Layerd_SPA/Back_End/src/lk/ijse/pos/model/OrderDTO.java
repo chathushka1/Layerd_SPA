@@ -2,15 +2,15 @@ package lk.ijse.pos.model;
 
 public class OrderDTO {
     private String orderId;
-    private String itemId;
+    private String customerId;
     private String date;
 
     public OrderDTO() {
     }
 
-    public OrderDTO(String orderId, String itemId, String date) {
+    public OrderDTO(String orderId, String customerId, String date) {
         this.orderId = orderId;
-        this.itemId = itemId;
+        this.customerId = customerId;
         this.date = date;
     }
 
@@ -22,12 +22,12 @@ public class OrderDTO {
         this.orderId = orderId;
     }
 
-    public String getItemId() {
-        return itemId;
+    public String getCustomerId() {
+        return customerId;
     }
 
-    public void setItemId(String itemId) {
-        this.itemId = itemId;
+    public void setCustomerId(String customerId) {
+        this.customerId = customerId;
     }
 
     public String getDate() {
@@ -42,7 +42,7 @@ public class OrderDTO {
     public String toString() {
         return "OrderDTO{" +
                 "orderId='" + orderId + '\'' +
-                ", itemId='" + itemId + '\'' +
+                ", customerId='" + customerId + '\'' +
                 ", date='" + date + '\'' +
                 '}';
     }

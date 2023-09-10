@@ -6,6 +6,7 @@ import lk.ijse.pos.dao.custom.OrderDAO;
 import lk.ijse.pos.entity.Order;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class OrderDAOImpl implements OrderDAO {
@@ -15,8 +16,8 @@ public class OrderDAOImpl implements OrderDAO {
     }
 
     @Override
-    public boolean add(Order dto, Connection connection) {
-        return false;
+    public boolean add(Order dto, Connection connection) throws SQLException {
+        return connection.createStatement().executeUpdate("INSERT INTO orders VALUES ('"+dto.getOrderId()+"','"+dto.getDate()+"','"+dto.getCustomerId()+"')")>0;
     }
 
     @Override
