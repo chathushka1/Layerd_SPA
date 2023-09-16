@@ -21,17 +21,22 @@ public class OrderDAOImpl implements OrderDAO {
     }
 
     @Override
-    public boolean update(Order dto) {
+    public boolean update(Order dto, Connection connection) {
         return false;
     }
 
     @Override
-    public boolean delete(String id) {
+    public boolean delete(String id, Connection connection) {
         return false;
     }
 
     @Override
     public String generateNewId() {
         return null;
+    }
+
+    @Override
+    public boolean UpdateQty(Order dto, Connection connection) throws SQLException, ClassNotFoundException {
+        return false;
     }
 }

@@ -7,9 +7,7 @@ import lk.ijse.pos.model.CustomerDTO;
 import lk.ijse.pos.util.ResponseUtil;
 import org.apache.commons.dbcp2.BasicDataSource;
 
-import javax.json.Json;
-import javax.json.JsonArrayBuilder;
-import javax.json.JsonObjectBuilder;
+import javax.json.*;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -67,6 +65,32 @@ public class CustomerServletAPI extends HttpServlet {
 
             customerBO.addCustomer(new CustomerDTO(id,name,address,salary),connection);
             resp.getWriter().print(ResponseUtil.getJson("Success","Customer Added"));
+
+        } catch (SQLException throwables) {
+            resp.setStatus(500);
+            resp.getWriter().print(ResponseUtil.getJson("Error", throwables.getMessage()));
+        }
+    }
+
+    @Override
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        try{
+            BasicDataSource pool = (BasicDataSource) getServletContext().getAttribute("dbcp");
+            Connection connection = pool.getConnection();
+
+            JsonReader jsonReader = Json.createReader(req.getReader());
+            JsonObject jsonObject = jsonReader.readObject();
+
+            String id = jsonObject.getString("cusId");
+            String name = jsonObject.getString("cusName");
+            String address = jsonObject.getString("cusAddress");
+            String salary = jsonObject.getString("cusSalary");
+
+            customerBO.updateCustomer(new CustomerDTO(id,name,address,salary),connection);
+            resp.getWriter().print(ResponseUtil.getJson("Success","Customer update"));
+
+            connection.close();
+
 
         } catch (SQLException throwables) {
             resp.setStatus(500);

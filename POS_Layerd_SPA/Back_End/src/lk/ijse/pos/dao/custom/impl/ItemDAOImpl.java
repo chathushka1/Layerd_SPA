@@ -31,17 +31,22 @@ public class ItemDAOImpl implements ItemDAO {
     }
 
     @Override
-    public boolean update(Item dto) {
+    public boolean update(Item dto, Connection connection) {
         return false;
     }
 
     @Override
-    public boolean delete(String id) {
+    public boolean delete(String id, Connection connection) {
         return false;
     }
 
     @Override
     public String generateNewId() {
         return null;
+    }
+
+    @Override
+    public boolean UpdateQty(Item dto, Connection connection) throws SQLException, ClassNotFoundException {
+        return false;
     }
 }

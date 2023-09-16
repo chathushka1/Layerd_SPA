@@ -35,17 +35,22 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    public boolean update(Customer dto) {
-        return false;
+    public boolean update(Customer dto, Connection connection) throws SQLException {
+        return connection.createStatement().executeUpdate("UPDATE customer SET name='"+dto.getCusName()+"',address='"+dto.getCusAddress()+"',salary='"+dto.getCusSalary()+"' WHERE id='"+dto.getCusId()+"'")>0;
     }
 
     @Override
-    public boolean delete(String id) {
+    public boolean delete(String id, Connection connection) {
         return false;
     }
 
     @Override
     public String generateNewId() {
         return null;
+    }
+
+    @Override
+    public boolean UpdateQty(Customer dto, Connection connection) throws SQLException, ClassNotFoundException {
+        return false;
     }
 }
